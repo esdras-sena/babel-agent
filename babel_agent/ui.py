@@ -1443,6 +1443,8 @@ def launch() -> None:
     )
     app = QApplication.instance() or QApplication(sys.argv)
     app.setApplicationName("Babel Agent")
+    app.setApplicationDisplayName("Babel Agent")
+    app.setDesktopFileName("babel-agent")
     app.setOrganizationName("BabelAgent")
     app.setStyle("Fusion")
     icon_file = asset_path("icon.png")

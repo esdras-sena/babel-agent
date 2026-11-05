@@ -16,30 +16,36 @@ Current version: **0.3.1**
 
 ---
 
-## What you get
+## Features
 
-- **Phone-call mode** (default): tutor speaks, then listens until you finish (silence ~3s) — no Record tap required
-- Optional **Push-to-talk** mode with a Record button
-- **Start session** / **End session** / **Mute call**
-- Dropdown of Ollama models from your machine — **this app never installs or pulls models**
-- Mic and Output device pickers (Bluetooth headsets supported on Linux)
-- Target language, native language, practice mode, CEFR (+ automatic leveling)
-- Corrections explained in your **native** language; practice stays in the **target** language
-- Chat transcript + mistakes/successes panel
-- SQLite memory under `./data/` (dev) or the OS user data dir (installed)
+- **Hands-free phone-call conversations** — tutor speaks, then listens until you finish (silence ~3s); no Record tap required (default talk mode)
+- **Push-to-talk** — optional Record button for each answer, plus Mute call during phone-call mode
+- **Native-language corrections** — practice and conversation stay in the target language; grammar explanations, glosses, and “you meant X” remarks are written in your native language
+- **Target + native STT lock** — faster-whisper is constrained to your session’s target and native languages only (never unrestricted auto-detect into a third language)
+- **Optional automatic CEFR leveling** — A1–C2 with a manual level picker; automatic mode can promote/demote from turn feedback
+- **Practice modes** — free conversation, role-play, vocabulary quiz, and translation practice (see below)
+- **Local Ollama only** — dropdown lists models already on your machine; the app never runs `ollama pull` and never ships a model
+- **Speech stack** — STT via faster-whisper (CUDA when usable, else CPU); TTS prefers offline Piper, with pyttsx3 fallback
+- **Mic and output device pickers** — including Bluetooth headsets on Linux
+- **Typed mid-session replies** — type a turn in the target language when you prefer text over the mic
+- **SQLite learner memory** — mistakes, successes, vocabulary, turns, and CEFR state under `./data/` (dev) or the OS user data dir (installed)
+- **Session recaps** — ending a session stores a short summary that can feed into later openings
+- **Chat transcript + mistakes/successes panel** in the desktop UI
+- **Native desktop packaging scripts** — build a Linux `.deb`, macOS `.app`/`.dmg`, or Windows onedir with the scripts under `packaging/` (you build them yourself; this repo does not imply prebuilt binaries are released)
 
 ### Practice modes
 
-- Free conversation
-- Role-play
-- Vocabulary quiz
-- Translation practice
+- **Free conversation** — open talk in the target language; tutor follows your topic
+- **Role-play** — two-person scenarios (shop, restaurant, hotel, travel, interview, etc.)
+- **Vocabulary quiz** — CEFR-aware drills (translate, fill-in, use-in-a-sentence)
+- **Translation practice** — native ↔ target sentences judged for meaning
 
 ### Defaults
 
 - Target: **Spanish**
 - Native: **Portuguese**
-- Starting level: **A1** (auto-leveling on)
+- Starting level: **A1** (automatic leveling on)
+- Talk mode: **Phone call** (hands-free)
 
 ---
 
