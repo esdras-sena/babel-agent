@@ -21,7 +21,7 @@ a = Analysis(
     [str(REPO / "app.py")],
     pathex=[str(REPO)],
     binaries=pyside_binaries + fw_binaries + ct2_binaries,
-    datas=pyside_datas + fw_datas,
+    datas=pyside_datas + fw_datas + [(str(REPO / "assets"), "assets")],
     hiddenimports=[
         "babel_agent",
         "babel_agent.ui",

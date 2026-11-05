@@ -21,6 +21,24 @@ def _default_data_dir() -> Path:
 
 
 ROOT = Path(__file__).resolve().parent.parent
+ASSETS_DIR = ROOT / "assets"
+
+
+def asset_path(name: str) -> Path:
+    """Resolve a bundled asset (dev tree or PyInstaller)."""
+    if getattr(sys, "frozen", False):
+        meipass = getattr(sys, "_MEIPASS", None)
+        if meipass:
+            cand = Path(meipass) / "assets" / name
+            if cand.exists():
+                return cand
+        # installed beside the binary under /opt/babel-agent/assets
+        beside = Path(sys.executable).resolve().parent / "assets" / name
+        if beside.exists():
+            return beside
+    return ASSETS_DIR / name
+
+
 DATA_DIR = _default_data_dir()
 DB_PATH = DATA_DIR / "learner.db"
 AUDIO_DIR = DATA_DIR / "audio"

@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 from PySide6.QtCore import QObject, Qt, QThread, QTimer, QUrl, Signal, Slot
-from PySide6.QtGui import QFont, QTextCursor
+from PySide6.QtGui import QFont, QIcon, QPixmap, QTextCursor
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
 from PySide6.QtWidgets import (
     QApplication,
@@ -38,7 +38,7 @@ from babel_agent.audio_capture import (
     list_input_devices,
     resolve_input_device,
 )
-from babel_agent.config import load_settings, save_settings
+from babel_agent.config import asset_path, load_settings, save_settings
 from babel_agent import audio_output
 from babel_agent.config import (
     CEFR_LEVELS,
@@ -425,6 +425,9 @@ class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Babel Agent")
+        icon_file = asset_path("icon.png")
+        if icon_file.exists():
+            self.setWindowIcon(QIcon(str(icon_file)))
         self.resize(1180, 780)
         self.setMinimumSize(920, 640)
         self.setStyleSheet(APP_STYLESHEET)
@@ -492,9 +495,22 @@ class MainWindow(QMainWindow):
         top_l.setContentsMargins(16, 12, 16, 12)
         top_l.setSpacing(12)
 
+        brand = QHBoxLayout()
+        brand.setSpacing(10)
+        brand.setContentsMargins(0, 0, 0, 0)
+        logo_file = asset_path("icon.png")
+        if logo_file.exists():
+            logo = QLabel()
+            logo.setObjectName("appLogo")
+            pix = QPixmap(str(logo_file))
+            logo.setPixmap(pix.scaled(36, 36, Qt.AspectRatioMode.KeepAspectRatio,
+                                      Qt.TransformationMode.SmoothTransformation))
+            logo.setFixedSize(36, 36)
+            brand.addWidget(logo)
         title = QLabel("Babel Agent")
         title.setObjectName("appTitle")
-        top_l.addWidget(title)
+        brand.addWidget(title)
+        top_l.addLayout(brand)
 
         self.ollama_label = QLabel()
         self.ollama_label.setObjectName("statusPill")
@@ -1429,6 +1445,9 @@ def launch() -> None:
     app.setApplicationName("Babel Agent")
     app.setOrganizationName("BabelAgent")
     app.setStyle("Fusion")
+    icon_file = asset_path("icon.png")
+    if icon_file.exists():
+        app.setWindowIcon(QIcon(str(icon_file)))
     win = build_window()
     win.show()
     sys.exit(app.exec())

@@ -53,6 +53,21 @@ install -m 0755 packaging/linux/babel-agent-wrapper.sh \
 install -m 0644 packaging/linux/babel-agent.desktop \
   "$BUILD_ROOT/usr/share/applications/babel-agent.desktop"
 
+# App icon (hicolor + pixmaps for desktop entry)
+mkdir -p "$BUILD_ROOT/usr/share/icons/hicolor/256x256/apps"
+mkdir -p "$BUILD_ROOT/usr/share/pixmaps"
+if [[ -f assets/icon.png ]]; then
+  install -m 0644 assets/icon.png \
+    "$BUILD_ROOT/usr/share/icons/hicolor/256x256/apps/babel-agent.png"
+  install -m 0644 assets/icon.png \
+    "$BUILD_ROOT/usr/share/pixmaps/babel-agent.png"
+  # also keep assets next to the app binary for the window icon
+  mkdir -p "$BUILD_ROOT/opt/babel-agent/assets"
+  install -m 0644 assets/icon.png "$BUILD_ROOT/opt/babel-agent/assets/icon.png"
+  install -m 0644 assets/logo.png "$BUILD_ROOT/opt/babel-agent/assets/logo.png"
+fi
+
+
 # Docs
 cp README.md "$BUILD_ROOT/usr/share/doc/$PKG_NAME/"
 cat > "$BUILD_ROOT/usr/share/doc/$PKG_NAME/copyright" << COPYRIGHT

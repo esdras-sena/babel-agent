@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Babel Agent" width="220" />
+</p>
+
 # Babel Agent
 
 A **native desktop** language-learning AI agent for **Linux**, **macOS**, and **Windows**.
