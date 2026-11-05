@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Babel Agent
+GenericName=Language Learning Tutor
+Comment=Local voice Babel Agent powered by Ollama
+Exec=babel-agent
+Icon=babel-agent
+Terminal=false
+Categories=Education;AudioVideo;
+Keywords=language;tutor;ollama;learn;
+StartupNotify=true

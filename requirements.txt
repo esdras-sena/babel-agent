@@ -1,0 +1,16 @@
+# Babel Agent — desktop app (Python 3.10–3.12 recommended; 3.11 ideal)
+PySide6>=6.6.0
+httpx>=0.27.0
+faster-whisper>=1.0.0
+numpy>=1.24.0
+soundfile>=0.12.1
+sounddevice>=0.4.6
+
+# Offline TTS (preferred). Needs system package espeak-ng for some voices.
+piper-tts>=1.2.0
+
+# Lightweight offline fallback if piper is unavailable
+pyttsx3>=2.90
+
+# Packaging (optional; used by packaging/*.sh)
+# pyinstaller>=6.0
