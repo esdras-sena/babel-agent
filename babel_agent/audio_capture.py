@@ -445,7 +445,7 @@ class AudioRecorder:
 # Tunable constants for Call / Phone-call mode
 VAD_SPEECH_RMS = 0.012          # RMS above this ≈ speech
 VAD_MIN_SPEECH_S = 0.45         # must have spoken at least this long
-VAD_SILENCE_S = 3.0             # end turn after 3 s of trailing silence (user pause tolerance)
+VAD_SILENCE_S = 1.0             # end turn after 1 s of trailing silence (user pause tolerance)
 VAD_MAX_UTTERANCE_S = 22.0      # force-stop after this much speech time
 VAD_POST_PLAYBACK_DELAY_MS = 280  # settle after TTS before arming mic
 VAD_POLL_MS = 80

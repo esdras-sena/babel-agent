@@ -18,7 +18,7 @@ Current version: **0.3.1**
 
 ## Features
 
-- **Hands-free phone-call conversations** — tutor speaks, then listens until you finish (silence ~3s); no Record tap required (default talk mode)
+- **Hands-free phone-call conversations** — tutor speaks, then listens until you finish (silence ~1s); no Record tap required (default talk mode)
 - **Push-to-talk** — optional Record button for each answer, plus Mute call during phone-call mode
 - **Native-language corrections** — practice and conversation stay in the target language; grammar explanations, glosses, and “you meant X” remarks are written in your native language
 - **Target + native STT lock** — faster-whisper is constrained to your session’s target and native languages only (never unrestricted auto-detect into a third language)
@@ -320,7 +320,7 @@ Zip the whole `dist\BabelAgent\` folder to share, or wrap it with Inno Setup / N
 5. Pick **Talk mode**: **Phone call** (hands-free) or **Push-to-talk**.
 6. Choose Mic / Output if you use a headset.
 7. **Start session** — the tutor greets you and (in Phone call mode) starts listening after it finishes speaking.
-8. Speak your answer; after ~3 seconds of silence it transcribes and replies.
+8. Speak your answer; after ~1 second of silence it transcribes and replies.
 9. **Mute call** pauses listening; **End session** saves a short summary.
 
 Speech-to-text only allows your **target** and **native** languages (never unrestricted auto-detect into other languages).
@@ -387,7 +387,7 @@ babel-agent/
 - **No sound in the headset** — set **Output** to your Bluetooth sink; on Linux `paplay` is used when available.
 - **No tutor voice** — install `piper-tts` and place a voice under `data/piper_voices/`, or rely on `pyttsx3`.
 - **Python 3.13+ wheel failures** — create the venv with 3.11 or 3.12.
-- **Phone call cuts you off early** — silence delay defaults to 3 seconds; speak continuously or pause shorter than that, or switch to Push-to-talk.
+- **Phone call cuts you off early** — silence delay defaults to 1 second; speak continuously or pause shorter than that, or switch to Push-to-talk.
 
 ---
 
